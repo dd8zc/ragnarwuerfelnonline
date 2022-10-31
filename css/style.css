@@ -1,0 +1,53 @@
+@font-face { 
+    font-family: 'RAGNARWUERFELN';
+    src: url("../fonts/RAGNARWUERFELN.ttf") format('truetype'); 
+}
+@font-face { 
+    font-family: 'chock-a-block';
+    src: url("../fonts/chock-a-block-nf.regular.ttf") format('truetype'); 
+}
+h1_logo {
+    text-shadow: 0 -1px 0 #999;
+    font-size: 30px;
+    padding: 0;
+    font-family: 'RAGNARWUERFELN';
+}
+.dark-mode {
+    background-color: black;
+    color: white;
+    text-transform: lowercase;
+}
+.diceToRoll {
+    position: relative;
+    text-shadow: 0 -1px 0 #999;
+    font-size: 30px;
+    padding: 0;
+    font-family: 'chock-a-block';
+    line-height:1.2em
+}
+/* .diceToRoll:hover span {
+    display: inline-block;
+    text-transform: uppercase;
+    animation: waveTheDice 1s linear;
+    animation-delay: calc(.1s * var(--i));
+} */
+@keyframes waveTheDice {
+    0%,40%,100% {
+      transform: translateY(0)
+    }
+    20% {
+        transform: translateY(-20px)
+    }
+}
+@keyframes spin {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+}
+@keyframes rolerball {
+    from {transform: translateX(0) rotate(0deg)}
+    to {transform: translateX(200%) rotate(720deg)}
+}

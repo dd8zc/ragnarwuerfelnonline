@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>RAGNAR Wurfeln</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'"> -->
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="components/loader.js"></script>
+    <script src="js/NoSleep.js"></script>
+    <script src="js/intro.min.js"></script>
+    <script language="JavaScript" type="text/javascript">
+
+      window.onload = (event) => {
+        var noSleep = new NoSleep();
+        noSleep.enable();
+      };
+
+      function toggleDarkness(id) {
+       if (document.getElementById(id).getAttribute('src') == "./img/outline_dark_mode_black_48.png") {
+          document.getElementById(id).src = "./img/outline_light_mode_white_48.png";
+          document.getElementById('wtf').src = "./img/outline_question_white_48.png";
+          document.getElementById('replay').src = "./img/outline_replay_white_48.png";
+        } else {
+          document.getElementById(id).src = "./img/outline_dark_mode_black_48.png";
+          document.getElementById('wtf').src = "./img/outline_question_black_48.png";
+          document.getElementById('replay').src = "./img/outline_replay_black_48.png";
+        }
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+      }
+
+    function addPoints(whereAndWhat) {
+        var value = parseInt(document.getElementById(whereAndWhat).value, 10);
+        value = isNaN(value) ? 0 : value;
+        value = value + whereAndWhat;
+        document.getElementById(whereAndWhat).value = value;
+        var totalPoints = parseInt(document.getElementById("totalPoints").value, 10);
+        totalPoints = isNaN(totalPoints) ? 0 : totalPoints;
+        totalPoints = totalPoints + whereAndWhat;
+        document.getElementById("totalPoints").value = totalPoints;
+        document.getElementById("text" + whereAndWhat).style.animation = "none";
+        document.getElementById("text" + whereAndWhat).offsetHeight; /* trigger reflow */
+        document.getElementById("text" + whereAndWhat).style.animation = "waveTheDice 1s";
+    }
+
+    function resetAll(){
+          neueRunde = confirm('Neue Runde?');
+          if (neueRunde) {
+            const arrayAllTheFileds  = [9,10,15,21,25,"totalPoints"]; 
+            for (let i = 0; i < arrayAllTheFileds.length; i++) {
+                try {
+                    document.getElementById(arrayAllTheFileds[i]).value = 0;
+                    document.getElementById(arrayAllTheFileds[i]).style.animation = "none";
+                    document.getElementById(arrayAllTheFileds[i]).offsetHeight; /* trigger reflow */
+                    document.getElementById(arrayAllTheFileds[i]).style.animation = "spin 1s";
+                } catch(e)
+                {}
+            } 
+          }
+    }
+
+    function wtfDialog(){
+        alert("Begleitapp für das fantastische Würfelspiel Ragnar Würfeln.\nViel Spaß beim spielen!");
+    }
+
+    </script>
+  </head>
+
+  <body>
+    <div align="center">
+        <br>
+        <h1_logo>RAGNAR WUERFELN</h1_logo>
+        <br>
+        <br>
+        <table  border="1" cellpadding="0" cellspacing="0" width="100%">
+          <tr>
+            <th>Würfel</th>
+            <th>Punkte</th>
+            <th>Gesamt</th>
+          </tr>
+          <tr onclick="addPoints(9)">
+            <td>
+                <div class="diceToRoll" id="text9">
+                    RRRRR
+                    <br>
+                    AAAAA
+                </div>
+            </td>
+            <td align="center">
+                <p>&nbsp;9 Punkte&nbsp;</p>    
+            </td>
+            <td align="center">  
+                <input type="button" id="9" value="0"></input>
+            </td>
+          </tr>
+          <tr onclick="addPoints(10)">
+            <td>
+                <div class="diceToRoll" id="text10">
+                    GGGGG
+                    <br>
+                    NNNNN
+                </div>
+            </td>
+            <td align="center">
+                <p>&nbsp;10 Punkte&nbsp;</p>
+            </td>
+            <td align="center">  
+                <input type="button" id="10" value="0"></input>
+            </td>
+          </tr>
+          <tr onclick="addPoints(15)">
+            <td>
+                <div class="diceToRoll" id="text15">
+                    RRRRRR
+                    <br>
+                    AAAAAA
+                </div>
+            </td>
+            <td align="center">
+                <p>&nbsp;15 Punkte&nbsp;</p>
+            </td>
+            <td align="center">  
+                <input type="button" id="15" value="0"></input>
+            </td>
+          </tr>
+          <tr onclick="addPoints(21)">
+            <td>
+                <div class="diceToRoll" id="text21">
+                    <!-- <span style="--i:1">R</span>
+                    <span style="--i:2">A</span>
+                    <span style="--i:3">G</span>
+                    <span style="--i:4">N</span>
+                    <span style="--i:5">A</span>
+					<span style="--i:6">R</span> -->
+                    RAGNAR
+                </div>
+            </td>
+            <td align="center">
+                <p>&nbsp;21 Punkte&nbsp;</p>
+            </td>
+            <td align="center">  
+                <input type="button" id="21" value="0"></input>
+            </td>
+          </tr>
+          <tr onclick="addPoints(25)">
+            <td>
+                <div class="diceToRoll" id="text25">
+                    GGGGGG
+                    <br>
+                    NNNNNN
+                </div>
+            </td>
+            <td align="center">
+                <p>&nbsp;25 Punkte&nbsp;</p>
+            </td>
+            <td align="center">  
+                <input type="button" id="25" value="0"></input>
+            </td>
+          </tr>   
+          <tr>
+              <td>
+                  <br>
+              </td>
+              <td>
+                  <br>
+              </td>
+              <td>
+                  <br>
+              </td>
+          </tr>   
+          <tr>
+            <td>
+                <div class="diceToRoll">
+                    GESAMT
+                </div>
+            </td>
+            <td align="center">
+                <p></p>
+            </td>
+            <td align="center">
+                <input type="button" id="totalPoints" value="0" ></input>
+            </td>
+          </tr>                 
+        </table>
+        <br>
+        <br>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tr>
+            <td align="left">
+              <img id="toggleDarknessButton" onclick="toggleDarkness('toggleDarknessButton')" src="./img/outline_dark_mode_black_48.png" width="55">
+            </td>
+            <td align="center"><img id="wtf" onclick="wtfDialog()" src="./img/outline_question_black_48.png" width="55"></td>
+            <td align="right"><img id="replay" onclick="resetAll()" src="./img/outline_replay_black_48.png" width="55"></td>
+          </tr>
+        </table>
+    </div>
+  </body>
+</html>
