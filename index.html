@@ -43,6 +43,9 @@
         document.getElementById("text" + whereAndWhat).style.animation = "none";
         document.getElementById("text" + whereAndWhat).offsetHeight; /* trigger reflow */
         document.getElementById("text" + whereAndWhat).style.animation = "waveTheDice 1s";
+        if (whereAndWhat == 21 && document.getElementById(whereAndWhat).value == 63) {
+            alert("Ragnar ist aufgewacht!\nDer nächste RAGNAR Wurf beendet das Spiel.");
+        } 
     }
 
     function resetAll(){
